@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        /* Body and Background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffe4e1, #ffc1cc);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Floating Background Hearts */
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: pink;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: pink;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -25px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 25px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Container */
+        .container {
+            text-align: center;
+        }
+
+        /* Title */
+        h1 {
+            font-size: 3rem;
+            color: #ff69b4;
+            text-shadow: 2px 2px #ffb6c1;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ff69b4;
+            text-shadow: 2px 2px #ffb6c1;
+            top: 200px;
+        }
+
+        /* Birthday Cake */
+        .cake {
+            width: 350px;
+            height: 450px;
+            background: #fff;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cake .layer {
+            position: absolute;
+            height: 50px;
+            background: #ff6f61;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+
+        .cake .layer:nth-child(1) {
+            bottom: 200px;
+            width: 50%;
+        }
+
+        .cake .layer:nth-child(2) {
+            bottom: 140px;
+            background: #ffab61;
+            width: 60%;
+        }
+
+        .cake .layer:nth-child(3) {
+            bottom: 80px;
+            background: #ffd761;
+            width: 70%;
+        }
+
+        /* Candles */
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 50px;
+            background: yellow;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 150px;
+        }
+
+        .candle .flame {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background: orange;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            animation: flicker 1s infinite;
+        }
+
+
+        @keyframes flicker {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+
+        /* Button */
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-out {
+            transform: translateY(-100%); /* 向上离开屏幕 */
+        }
+
+        /* Scrolling Text */
+        .marquee {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .marquee span {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 1.5rem;
+            animation: scroll 2.5s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee span:nth-child(1) {
+            top: 10%;
+            left: 100%;
+            animation-delay: 0s;
+        }
+
+        .marquee span:nth-child(2) {
+            top: 30%;
+            left: 100%;
+            animation-delay: 0.5s;
+        }
+
+        .marquee span:nth-child(3) {
+            top: 50%;
+            left: 100%;
+            animation-delay: 1s;
+        }
+
+        .marquee span:nth-child(4) {
+            top: 70%;
+            left: 100%;
+            animation-delay: 1.5s;
+        }
+
+        .marquee span:nth-child(5) {
+            top: 20%;
+            right: 100%;
+            animation-delay: 0.25s;
+            animation: scrollLeft 2.5s linear infinite;
+        }
+
+        .marquee span:nth-child(6) {
+            top: 40%;
+            right: 100%;
+            animation-delay: 0.75s;
+            animation: scrollLeft 10s linear infinite;
+        }
+
+        .marquee span:nth-child(7) {
+            top: 60%;
+            right: 100%;
+            animation-delay: 1.25s;
+            animation: scrollLeft 10s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+                opacity: 1; /* 元素完全可见 */
+                }
+            80% {
+                 transform: translateX(-300%); /* 元素向左移动 */
+                 opacity: 1; /* 继续保持可见 */
+                }
+            100% {
+                transform: translateX(-320%); /* 继续向左移动 */
+                opacity: 0; /* 元素逐渐消失 */
+                }
+
+        }
+
+        @keyframes scrollLeft {
+            0% {
+        transform: translateX(0);
+        opacity: 1; /* 元素完全可见 */
+    }
+    80% {
+        transform: translateX(300%); /* 元素向左移动 */
+        opacity: 1; /* 继续保持可见 */
+    }
+    100% {
+        transform: translateX(320%); /* 继续向左移动 */
+        opacity: 0; /* 元素逐渐消失 */
+    }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Happy Birthday!</h2>
+        <h1>lemon小姐生日快乐!</h1>
+        <div class="cake">
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+        </div>
+        <button class="button" onclick="location.href='letter.html';">Click to Continue</button>
+        
+
+    </div>
+    
+    <div class="marquee">
+        <span>生日快乐!</span>
+        <span>Happy Birthday!</span>
+        <span>祝你开心每一天!</span>
+        <span>Enjoy Your Day!</span>
+        <span>Stay Blessed!</span>
+        <span>愿你幸福!</span>
+        <span>Have Fun!</span>
+    </div>
+    <div class="heart" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="heart" style="top: 50%; left: 70%; animation-delay: 2s;"></div>
+    <div class="heart" style="top: 80%; left: 40%; animation-delay: 4s;"></div>
+    <div class="heart" style="top: 30%; left: 10%; animation-delay: 1s;"></div>
+    <div class="heart" style="top: 60%; left: 80%; animation-delay: 3s;"></div>
+    <div class="heart" style="top: 25%; left: 65%; animation-delay: 0.5s;"></div>
+    <div class="heart" style="top: 90%; left: 35%; animation-delay: 1.5s;"></div>
+    <div class="heart" style="top: 45%; left: 15%; animation-delay: 3.5s;"></div>
+    <div class="heart" style="top: 15%; left: 85%; animation-delay: 4.5s;"></div>
+    <div class="heart" style="top: 35%; left: 90%; animation-delay: 1.2s;"></div>
+    <div class="heart" style="top: 65%; left: 25%; animation-delay: 0.8s;"></div>
+    <div class="heart" style="top: 85%; left: 10%; animation-delay: 2.3s;"></div>
+    <div class="heart" style="top: 40%; left: 75%; animation-delay: 4.2s;"></div>
+
+    
+</body>
+</html>
